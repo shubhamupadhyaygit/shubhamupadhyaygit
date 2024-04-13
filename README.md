@@ -1,6 +1,6 @@
 # Hi there! 👋
 
-I'm Shubham Upadhyay, a passionate individual interested in data science and machine learning. Currently, I'm on a journey to expand my knowledge and skills in this exciting field.
+I'm Shubham Upadhyay, a passionate individual interested in data science & analytics. Currently, I'm on a journey to expand my knowledge and skills in this exciting field.
 
 ## About Me
 - 🌱 I’m currently learning and exploring various aspects of data science, including statistical analysis, machine learning algorithms, and data visualization.
@@ -20,6 +20,13 @@ I'm Shubham Upadhyay, a passionate individual interested in data science and mac
 - matplotlib
 - seaborn
 - Plotly
+- `Python`
+- `SQL`
+- `numpy`
+- `pandas`
+- `scikit-learn`
+- `matplotlib`
+- `seaborn`
 
 ## GitHub Stats
 ![Shubham's GitHub Stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true)
