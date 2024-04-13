@@ -12,11 +12,14 @@ I'm Shubham Upadhyay, a passionate individual interested in data science and mac
 ## Languages and Tools:
 - Python
 - SQL
+- Tableau
+- Power BI
 - numpy
 - pandas
 - scikit-learn
 - matplotlib
 - seaborn
+- Plotly
 
 ## GitHub Stats
 ![Shubham's GitHub Stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true)
