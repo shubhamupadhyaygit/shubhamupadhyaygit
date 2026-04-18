@@ -346,8 +346,8 @@
     /* ─── ABOUT ─── */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 4rem;
+      grid-template-columns: 360px 1fr;
+      gap: 3rem;
       align-items: start;
     }
 
@@ -356,8 +356,49 @@
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 2.5rem;
-      position: sticky;
-      top: 100px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-content-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-bio-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-bio-card::before {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 140px; height: 140px;
+      background: radial-gradient(circle, rgba(255,110,180,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-tags-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem 2.5rem;
     }
 
     .profile-img-wrap {
@@ -466,13 +507,6 @@
     }
 
     .skill-fill.animate { transform: scaleX(1); }
-
-    .about-content p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
-    }
 
     .about-tags {
       display: flex;
@@ -957,6 +991,10 @@
     }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
@@ -1020,11 +1058,6 @@
     Open to new opportunities
   </div>
   
-  <!-- Hero photo - matches original images/A.jpg -->
-  <div style="position:absolute;top:0;right:0;width:45%;height:100%;z-index:0;pointer-events:none;overflow:hidden;">
-    <div style="position:absolute;inset:0;background-image:url('images/A.jpg');background-size:contain;background-position:center right;background-repeat:no-repeat;opacity:0.18;"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(to right, var(--bg) 20%, transparent 60%, var(--bg) 100%);"></div>
-  </div>
   <h1 class="hero-name">
     Shubham<br>
     <span class="hero-name-gradient">Upadhyay</span>
@@ -1063,7 +1096,10 @@
 <section id="about">
   <div class="section-label">About me</div>
   <h2 class="section-title reveal">Who I am</h2>
+
   <div class="about-grid">
+
+    <!-- LEFT: Profile Card -->
     <div class="about-card reveal">
       <div class="profile-img-wrap">
         <div class="profile-img-ring"></div>
@@ -1074,12 +1110,20 @@
       </div>
       <div class="profile-name">Shubham Upadhyay</div>
       <div class="profile-role">Data Analyst / Business Analyst</div>
+
+      <div style="height:1px;background:var(--border);margin:1.5rem 0;"></div>
+
       <div class="info-row"><span class="info-label">Experience</span><span class="info-val">4 Years</span></div>
       <div class="info-row"><span class="info-label">Location</span><span class="info-val">Mumbai, India</span></div>
       <div class="info-row"><span class="info-label">Education</span><span class="info-val">M.Sc Statistics</span></div>
       <div class="info-row"><span class="info-label">Languages</span><span class="info-val">English, Hindi</span></div>
-      <div class="info-row"><span class="info-label">Email</span><span class="info-val" style="font-size:0.8rem">shubhamupadhyaycom493@gmail.com</span></div>
+      <div class="info-row"><span class="info-label">Domain</span><span class="info-val" style="font-size:0.82rem">Retail, Ecommerce, Lending</span></div>
+      <div class="info-row"><span class="info-label">BI Tools</span><span class="info-val" style="font-size:0.82rem">Tableau, Power BI, Looker</span></div>
+
+      <div style="height:1px;background:var(--border);margin:1.5rem 0;"></div>
+
       <div class="skill-section">
+        <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;">Skill Proficiency</p>
         <div class="skill-row">
           <div class="skill-header"><span>SQL</span><span>95%</span></div>
           <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
@@ -1102,25 +1146,65 @@
         </div>
       </div>
     </div>
-    <div class="about-content">
-      <p class="reveal">With over 4 years of hands-on experience in data science and analytics, backed by a Master's degree in Statistics, I specialize in uncovering meaningful insights through data. Proficient in statistical analysis, hypothesis testing, customer behavior analysis, and machine learning.</p>
-      <p class="reveal reveal-delay-1">I thrive on transforming raw data into actionable strategies. Passionate about solving complex problems, I have successfully led impactful projects and mentored aspiring analysts, driving data-driven decision-making with precision and innovation.</p>
-      <div class="about-tags reveal reveal-delay-2">
-        <span class="tag">Tableau</span>
-        <span class="tag">Power BI</span>
-        <span class="tag">Looker Studio</span>
-        <span class="tag">BigQuery</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">Python</span>
-        <span class="tag">Alteryx</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Google Analytics 4</span>
-        <span class="tag">JIRA</span>
-        <span class="tag">SEO</span>
-        <span class="tag">A/B Testing</span>
-        <span class="tag">Machine Learning</span>
-        <span class="tag">MongoDB</span>
+
+    <!-- RIGHT: Content Panels stacked vertically -->
+    <div class="about-content-panel">
+
+      <!-- Bio card -->
+      <div class="about-bio-card reveal reveal-delay-1">
+        <div class="section-label" style="margin-bottom:1rem;">My Story</div>
+        <p style="color:var(--text);font-size:1.05rem;line-height:1.8;margin-bottom:1rem;">With over <strong style="color:var(--accent1)">4 years</strong> of hands-on experience in data science and analytics, backed by a Master's degree in Statistics, I specialize in uncovering meaningful insights through data.</p>
+        <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;margin-bottom:1rem;">Proficient in statistical analysis, hypothesis testing, customer behavior analysis, and machine learning, I thrive on transforming raw data into actionable strategies.</p>
+        <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;">Passionate about solving complex problems, I have successfully led impactful projects and mentored <strong style="color:var(--accent3)">100+ aspiring analysts</strong>, driving data-driven decision-making with precision and innovation.</p>
       </div>
+
+      <!-- What I do - 2x2 highlight cards -->
+      <div class="reveal reveal-delay-2" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.5rem;transition:all 0.3s;cursor:default;" onmouseenter="this.style.borderColor='rgba(108,99,255,0.4)'" onmouseleave="this.style.borderColor='var(--border)'">
+          <div style="font-size:1.6rem;margin-bottom:0.75rem;">📊</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;">Data Analysis</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">SQL, Python, statistical modeling & hypothesis testing</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.5rem;transition:all 0.3s;cursor:default;" onmouseenter="this.style.borderColor='rgba(255,110,180,0.4)'" onmouseleave="this.style.borderColor='var(--border)'">
+          <div style="font-size:1.6rem;margin-bottom:0.75rem;">📈</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;">BI & Dashboards</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">Tableau, Power BI, Looker Studio & Google Analytics</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.5rem;transition:all 0.3s;cursor:default;" onmouseenter="this.style.borderColor='rgba(0,229,196,0.4)'" onmouseleave="this.style.borderColor='var(--border)'">
+          <div style="font-size:1.6rem;margin-bottom:0.75rem;">🤖</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;">Machine Learning</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">Predictive models, sentiment analysis & ML pipelines</div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.5rem;transition:all 0.3s;cursor:default;" onmouseenter="this.style.borderColor='rgba(255,209,102,0.4)'" onmouseleave="this.style.borderColor='var(--border)'">
+          <div style="font-size:1.6rem;margin-bottom:0.75rem;">🎯</div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;">Business Strategy</div>
+          <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">A/B testing, funnel optimization & growth analytics</div>
+        </div>
+      </div>
+
+      <!-- Tags card -->
+      <div class="about-tags-card reveal reveal-delay-3">
+        <p style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Tech Stack &amp; Tools</p>
+        <div class="about-tags">
+          <span class="tag">Tableau</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Looker Studio</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Python</span>
+          <span class="tag">Alteryx</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Google Analytics 4</span>
+          <span class="tag">JIRA</span>
+          <span class="tag">SEO</span>
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">GCP</span>
+          <span class="tag">Freshdesk</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
