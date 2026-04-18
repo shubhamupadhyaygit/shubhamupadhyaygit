@@ -170,7 +170,10 @@ nav.s{padding:.8rem 4rem}
 
 /* EXPERIENCE */
 #exp-sec{background:var(--surface)}
-.exp-g{display:grid;grid-template-columns:260px 1fr;gap:4rem;margin-top:4rem;align-items:start}
+
+/* FIX: reduced left col from 260px to 200px, gap from 4rem to 2rem */
+.exp-g{display:grid;grid-template-columns:200px 1fr;gap:2rem;margin-top:4rem;align-items:start}
+
 .exp-nav{position:sticky;top:110px;display:flex;flex-direction:column;gap:.5rem}
 .en-item{display:flex;align-items:center;gap:14px;padding:.9rem 1.1rem;border-radius:16px;cursor:pointer;transition:all .25s;border:1px solid transparent}
 .en-item.active{background:var(--card);border-color:var(--border)}
@@ -193,8 +196,12 @@ nav.s{padding:.8rem 4rem}
 .ep-dt{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--text3);letter-spacing:.05em;display:flex;align-items:center;gap:7px}
 .ep-dt-dot{width:5px;height:5px;border-radius:50%;background:var(--m1)}
 .ep-desc{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:1.8rem}
+
+/* FIX: ep-list items now use flex with the text wrapped in a span for clean wrapping */
 .ep-list{list-style:none;display:flex;flex-direction:column;gap:.85rem}
-.ep-list li{display:flex;gap:13px;font-size:.86rem;color:var(--text2);line-height:1.65}
+.ep-list li{display:flex;gap:13px;font-size:.86rem;color:var(--text2);line-height:1.65;align-items:flex-start}
+.ep-list li span.txt{flex:1}
+
 .bi{width:20px;height:20px;border-radius:6px;background:rgba(124,108,252,.13);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
 .bi svg{width:10px;height:10px}
 .ep-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2rem}
@@ -301,6 +308,9 @@ footer a:hover{color:var(--v2)}
   .gh-cta{margin:0 1.5rem;padding:3rem 2rem}
   footer{flex-direction:column;gap:.8rem;text-align:center;padding:2rem 1.5rem}
   .soc-g{grid-template-columns:1fr}
+  /* FIX: mobile ep-list text size */
+  .ep-list li{font-size:.82rem}
+  .bi{margin-top:3px}
 }
 </style>
 </head>
@@ -446,6 +456,7 @@ footer a:hover{color:var(--v2)}
 
       <div class="exp-panels rev d2">
 
+        <!-- Sleep Company -->
         <div class="ep active" id="tab-sleep">
           <div class="ep-head">
             <div class="co-logo"><img src="images/sleeplogo.png" alt="Sleep" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="co-ini">SC</span></div>
@@ -457,15 +468,31 @@ footer a:hover{color:var(--v2)}
           </div>
           <p class="ep-desc">Fast-growing D2C brand revolutionizing sleep comfort with patented SmartGRID technology. Leading post-purchase analytics to improve customer experience end-to-end.</p>
           <ul class="ep-list">
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Led post-purchase analytics across dispatch, delivery, and tech installation journeys.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Built real-time Freshdesk–Ameyo cloud integration for faster call and ticket syncing.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Created BigQuery + Looker dashboards for dispatch, delivery EDD breaches &amp; escalations.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Improved WhatsApp bot notification accuracy from ~40% to <strong>95%+</strong>.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Led MongoDB–GCP integration, cutting installation TAT from <strong>48 → 24 hours</strong>.</li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Led post-purchase analytics across dispatch, delivery, and tech installation journeys.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Built real-time Freshdesk–Ameyo cloud integration for faster call and ticket syncing.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Created BigQuery + Looker dashboards for dispatch, delivery EDD breaches &amp; escalations.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Improved WhatsApp bot notification accuracy from ~40% to <strong>95%+</strong>.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Led MongoDB–GCP integration, cutting installation TAT from <strong>48 → 24 hours</strong>.</span>
+            </li>
           </ul>
           <div class="ep-tags"><span class="etg">BigQuery</span><span class="etg">Looker</span><span class="etg">MongoDB</span><span class="etg">GCP</span><span class="etg">Freshdesk</span><span class="etg">Python</span></div>
         </div>
 
+        <!-- Shaadi.com -->
         <div class="ep" id="tab-shaadi">
           <div class="ep-head">
             <div class="co-logo"><img src="images/shaadi.jpg" alt="Shaadi" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="co-ini">SI</span></div>
@@ -477,15 +504,31 @@ footer a:hover{color:var(--v2)}
           </div>
           <p class="ep-desc">Premier Indian matrimonial platform. Drove CRM analytics, automated reporting pipelines, and business process improvements impacting millions of users.</p>
           <ul class="ep-list">
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Automated data pipelines from Looker Builder to MySQL for cleaner actionable insights.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Built multi-level Tableau dashboards (business, process, agent) for CRM core metrics.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Designed Ranking Dashboard to incentivize top performers, improving customer service.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Conducted phased ABC testing reducing manual intervention by <strong>50%</strong>.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Reduced MIS team workload by <strong>80%</strong>, saving stakeholders <strong>70%</strong> reporting time.</li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Automated data pipelines from Looker Builder to MySQL for cleaner actionable insights.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Built multi-level Tableau dashboards (business, process, agent) for CRM core metrics.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Designed Ranking Dashboard to incentivize top performers, improving customer service.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Conducted phased ABC testing reducing manual intervention by <strong>50%</strong>.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Reduced MIS team workload by <strong>80%</strong>, saving stakeholders <strong>70%</strong> reporting time.</span>
+            </li>
           </ul>
           <div class="ep-tags"><span class="etg">Tableau</span><span class="etg">MySQL</span><span class="etg">Looker</span><span class="etg">CRM</span><span class="etg">A/B Testing</span></div>
         </div>
 
+        <!-- ImpactGuru -->
         <div class="ep" id="tab-impact">
           <div class="ep-head">
             <div class="co-logo"><img src="images/IG.jpg" alt="IG" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="co-ini">IG</span></div>
@@ -497,11 +540,26 @@ footer a:hover{color:var(--v2)}
           </div>
           <p class="ep-desc">India's leading healthcare crowdfunding platform. Led analytics for 2M+ user datasets across Payments, CRM, Insurance, and Sales Growth verticals.</p>
           <ul class="ep-list">
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Optimized donor funnels — <strong>50%</strong> conversion boost, <strong>1.5X</strong> revenue growth via A/B testing.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Achieved <strong>3.5X ROI</strong> on social media ads through advanced targeting &amp; bid optimization.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Built Tableau &amp; Power BI dashboards increasing revenue by <strong>25%</strong>.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Developed ML model with <strong>88% accuracy</strong>, improving targeting by 80%.</li>
-            <li><span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>Reduced daily MIS workload by <strong>65%</strong> via Alteryx, Python &amp; SQL automation.</li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Optimized donor funnels — <strong>50%</strong> conversion boost, <strong>1.5X</strong> revenue growth via A/B testing.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Achieved <strong>3.5X ROI</strong> on social media ads through advanced targeting &amp; bid optimization.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Built Tableau &amp; Power BI dashboards increasing revenue by <strong>25%</strong>.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Developed ML model with <strong>88% accuracy</strong>, improving targeting by 80%.</span>
+            </li>
+            <li>
+              <span class="bi"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#7c6cfc" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="txt">Reduced daily MIS workload by <strong>65%</strong> via Alteryx, Python &amp; SQL automation.</span>
+            </li>
           </ul>
           <div class="ep-tags"><span class="etg">Python</span><span class="etg">SQL</span><span class="etg">Tableau</span><span class="etg">Power BI</span><span class="etg">Alteryx</span><span class="etg">ML</span></div>
         </div>
@@ -681,7 +739,6 @@ const obs=new IntersectionObserver(entries=>{
     e.target.classList.add('on');
     e.target.querySelectorAll('.sk-f').forEach(f=>f.style.width=f.dataset.w+'%');
     if(e.target.classList.contains('stats-bar')||e.target.classList.contains('p-card')){
-      // counters
       e.target.querySelectorAll('.sn[data-t]').forEach(el=>{
         const tgt=+el.dataset.t;let n=0;
         const step=Math.max(1,Math.ceil(tgt/55));
@@ -692,7 +749,6 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.1});
 document.querySelectorAll('.rev,.stats-bar').forEach(el=>obs.observe(el));
 
-// Trigger skill bars when profile card comes into view
 const sObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)setTimeout(()=>e.target.querySelectorAll('.sk-f').forEach(f=>f.style.width=f.dataset.w+'%'),400)});
 },{threshold:.25});
